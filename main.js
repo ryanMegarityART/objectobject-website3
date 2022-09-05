@@ -20,6 +20,7 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 camera.position.setZ(30);
+camera.position.setY(-50);
 
 const objectObjectTransparentTexture = textureLoader.load(
   "assets/images/logoTransparent1.png"
