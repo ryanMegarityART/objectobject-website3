@@ -22,7 +22,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(30);
 
 const objectObjectTransparentTexture = textureLoader.load(
-  "/images/logoTransparent1.png"
+  "assets/images/logoTransparent1.png"
 );
 const geometry = new THREE.BoxGeometry(15, 15, 15);
 const material = new THREE.MeshBasicMaterial({
@@ -69,12 +69,12 @@ let starArray = Array(1000).fill().map(addStar);
 
 // const spaceTexture = new THREE.TextureLoader().load("logoTransparent1.png");
 const texture = cubeTextureLoader.load([
-  "./images/wrath_ft.jpg",
-  "./images/wrath_bk.jpg",
-  "./images/wrath_up.jpg",
-  "./images/wrath_dn.jpg",
-  "./images/wrath_rt.jpg",
-  "./images/wrath_lf.jpg",
+  "assets/images/wrath_ft.jpg",
+  "assets/images/wrath_bk.jpg",
+  "assets/images/wrath_up.jpg",
+  "assets/images/wrath_dn.jpg",
+  "assets/images/wrath_rt.jpg",
+  "assets/images/wrath_lf.jpg",
 ]);
 scene.background = texture;
 
