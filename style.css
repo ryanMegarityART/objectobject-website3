@@ -37,13 +37,13 @@ iframe {
   padding: 0;
 }
 
-
 .icon1 {
   position: fixed;
   bottom: 15%;
   font-size: 3em;
   right: 5%;
   text-decoration: none;
+  color: antiquewhite;
 }
 
 .icon2 {
@@ -51,5 +51,6 @@ iframe {
   bottom: 5%;
   font-size: 3em;
   right: 5%;
+  color: antiquewhite;
   text-decoration: none;
 }
