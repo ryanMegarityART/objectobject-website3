@@ -25,10 +25,12 @@ const objectObjectTransparentTexture = textureLoader.load(
   "assets/images/logoTransparent1.png"
 );
 const geometry = new THREE.BoxGeometry(15, 15, 15);
-const material = new THREE.MeshBasicMaterial({
-  color: 0xffffff,
+const normalTexture = textureLoader.load("assets/images/normal.jpg");
+const material = new THREE.MeshStandardMaterial({
+  color: 0xFFFFFF,
   // wireframe: true,
   map: objectObjectTransparentTexture,
+  normal: normalTexture,
 });
 const torus = new THREE.Mesh(geometry, material);
 scene.add(torus);
