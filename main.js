@@ -4,15 +4,15 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 let screenClicked = false;
 
-document.querySelector("#soundcloudFrame").addEventListener("click", () => {
-  screenClicked = true;
-});
+// document.querySelector("#soundcloudFrame").addEventListener("click", () => {
+//   screenClicked = true;
+// });
 
-document
-  .querySelector("#soundcloudFrame")
-  .addEventListener("touchstart", () => {
-    screenClicked = true;
-  });
+// document
+//   .querySelector("#soundcloudFrame")
+//   .addEventListener("touchstart", () => {
+//     screenClicked = true;
+//   });
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -101,6 +101,8 @@ const renderLoop = () => {
   torus.rotation.x += 0.01;
   torus.rotation.y += 0.005;
   torus.rotation.z += 0.01;
+  screenClicked =
+    document.activeElement === document.getElementsByTagName("iframe")[0];
   starArray = starArray.map((star) => {
     if (screenClicked) {
       let x, y, z;
