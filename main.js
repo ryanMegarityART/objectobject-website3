@@ -25,19 +25,22 @@ camera.position.setY(-50);
 const objectObjectTransparentTexture = textureLoader.load(
   "assets/images/logoTransparent1.png"
 );
-const geometry = new THREE.BoxGeometry(15, 15, 15);
+const objectPlanetTexture = textureLoader.load(
+  "assets/images/objectPlanetTexture.png"
+);
+const geometry = new THREE.SphereGeometry(15, 32, 16);
 const normalTexture = textureLoader.load("assets/images/normal.jpg");
 const material = new THREE.MeshStandardMaterial({
-  color: 0xFFFFFF,
+  color: 0xffffff,
   // wireframe: true,
-  map: objectObjectTransparentTexture,
+  map: objectPlanetTexture,
   normal: normalTexture,
 });
 const torus = new THREE.Mesh(geometry, material);
 scene.add(torus);
 
-const pointLight = new THREE.PointLight(0xfffff);
-pointLight.position.set(15, -5, 15);
+const pointLight = new THREE.PointLight(0xffffff);
+pointLight.position.set(15, -15, 15);
 scene.add(pointLight);
 
 const ambientLight = new THREE.AmbientLight(0xfffff);
@@ -50,10 +53,11 @@ const gridHelper = new THREE.GridHelper(200, 50);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 function addStar() {
-  const geometry = new THREE.IcosahedronGeometry(Math.random() * 0.5);
+  const geometry = new THREE.IcosahedronGeometry(Math.random() * 2);
   const material = new THREE.MeshStandardMaterial({
     color: 0xffffff,
-    wireframe: true,
+    // wireframe: true,
+    map: objectObjectTransparentTexture,
   });
   const star = new THREE.Mesh(geometry, material);
 
@@ -86,12 +90,31 @@ const renderLoop = () => {
   torus.rotation.y += 0.005;
   torus.rotation.z += 0.01;
   starArray = starArray.map((star) => {
-    const [x, y, z] = Array(3)
-      .fill()
-      .map(() => THREE.MathUtils.randFloatSpread(100));
+    // const [x, y, z] = Array(3)
+    //   .fill()
+    //   .map(() => THREE.MathUtils.randFloatSpread(300));
+
+    const x =
+      Math.random() > 0.9
+        ? Number(star.position.x) + 0.01
+        : Number(star.position.x) - 0.01;
+    const y =
+      Math.random() > 0.9
+        ? Number(star.position.y) - 0.01
+        : Number(star.position.y) + 0.01;
+    const z =
+      Math.random() > 0.9
+        ? Number(star.position.z) + 0.01
+        : Number(star.position.z) - 0.01;
+
+    
+
     star.rotation.x += Math.random() * 0.05;
     star.rotation.y += Math.random() * 0.005;
     star.rotation.z += Math.random() * 0.05;
+    console.log(x, y, z);
+
+    star.position.set(x, y, z);
     return star;
   });
   renderer.setSize(window.innerWidth, window.innerHeight);
