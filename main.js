@@ -4,9 +4,11 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 let screenClicked = false;
 
-document.querySelector("#soundcloudFrame").addEventListener("click", () => {
-  screenClicked = true;
-});
+document
+  .querySelector("#soundcloudFrame")
+  .addEventListener("click touchstart", () => {
+    screenClicked = true;
+  });
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
