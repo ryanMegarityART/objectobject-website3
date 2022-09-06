@@ -90,29 +90,30 @@ const renderLoop = () => {
   torus.rotation.y += 0.005;
   torus.rotation.z += 0.01;
   starArray = starArray.map((star) => {
-    // const [x, y, z] = Array(3)
-    //   .fill()
-    //   .map(() => THREE.MathUtils.randFloatSpread(300));
+    let x, y, z;
 
-    const x =
-      Math.random() > 0.9
-        ? Number(star.position.x) + 0.01
-        : Number(star.position.x) - 0.01;
-    const y =
-      Math.random() > 0.9
-        ? Number(star.position.y) - 0.01
-        : Number(star.position.y) + 0.01;
-    const z =
-      Math.random() > 0.9
-        ? Number(star.position.z) + 0.01
-        : Number(star.position.z) - 0.01;
-
-    
+    if (Math.random() < 0.01) {
+      [x, y, z] = Array(3)
+        .fill()
+        .map(() => THREE.MathUtils.randFloatSpread(300));
+    } else {
+      x =
+        Math.random() > 0.9
+          ? Number(star.position.x) + 0.1
+          : Number(star.position.x) - 0.1;
+      y =
+        Math.random() > 0.9
+          ? Number(star.position.y) - 0.1
+          : Number(star.position.y) + 0.3;
+      z =
+        Math.random() > 0.9
+          ? Number(star.position.z) + 0.1
+          : Number(star.position.z) - 0.1;
+    }
 
     star.rotation.x += Math.random() * 0.05;
     star.rotation.y += Math.random() * 0.005;
     star.rotation.z += Math.random() * 0.05;
-    console.log(x, y, z);
 
     star.position.set(x, y, z);
     return star;
